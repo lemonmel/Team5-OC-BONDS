@@ -131,7 +131,7 @@ function buildModal() {
         `<form id="form">
             <div class="mb-3">
                 <label for="unit" class="col-form-label">Unit:</label>
-                <input type="text" class="form-control" id="unit" required>
+                <input type="text" class="form-control" id="unit" pattern="[A-Z]{1}-[0-9]{2}-[0-9]{2}" placeholder="A-10-13" required>
             </div>
             <div class="mb-3">
                 <label for="name" class="col-form-label">Resident Name:</label>
@@ -139,7 +139,7 @@ function buildModal() {
             </div>
             <div class="mb-3">
                 <label for="gender" class="col-form-label">Gender:</label>
-                <input type="radio" id="F" name="gender" value="F">
+                <input type="radio" id="F" name="gender" value="F" required>
                 <label for="F">Female</label>
                 <input type="radio" id="M" name="gender" value="M">
                 <label for="M">Male</label>
