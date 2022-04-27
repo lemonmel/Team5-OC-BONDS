@@ -160,7 +160,7 @@ function buildModal() {
         `<form id="form">
         <div class="mb-3">
             <label for="location" class="col-form-label">Location:</label>
-            <input type="text" class="form-control" id="location" pattern="[A-Z]{1}-[0-9]{2}-[0-9a-zA-Z]{2}" placeholder="X-XX-XX" required>
+            <input type="text" class="form-control" id="location" pattern="[A-Z]{1}-[0-9]{2}-[0-9a-zA-Z]{2}" placeholder="A-10-G1" required>
         </div>
         <div class="mb-3">
             <label for="name" class="col-form-label">Type:</label>
@@ -214,7 +214,7 @@ function viewComplain(unit){
     <form id="form">
         <div class="mb-3">
             <label for="location" class="col-form-label">Unit Number:</label>
-            <input type="text" class="form-control" id="location" pattern="[A-Z]{1}-[0-9]{2}-[0-9a-zA-Z]{2}" placeholder="X-XX-XX" required>
+            <input type="text" class="form-control" id="location" required>
         </div>
         <div class="mb-3">
             <label for="name" class="col-form-label">Name:</label>
