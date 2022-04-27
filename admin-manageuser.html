@@ -1,365 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
 
-/* call this function when window load */
-$(document).ready(function () {
-    buildUserContent('#UserTableBody')
-    buildRequestContent('#RequestTableBody')
-    buildVisitorContent('#VisitorTableBody')
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Jquery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/admin-favicon.png">
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Bootstrap ICON -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!-- D3JS -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <!-- Datatable CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <!-- Datatable JS CDN -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <!-- Sweet Alert CDN -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <title>Bonds Admin</title>
+</head>
 
-    buildTable('#UserTable')
-    buildTable('#RequestTable')
-    buildTable('#VisitorTable')
-})
+<body>
 
-// Resident Data List
-var residents = [
-    { photo: "assets/images/admin.png", unit: "A-01-03", name: "Lim Ah Tong", IC: "010201-07-0111", contact: "016-1286028", emergency: "012-1286028", gender: 'F', dateIn: Date(), password: "unit" },
-    { photo: "assets/images/biolab.jpg", unit: "B-01-03", name: "Lim Mah Tong", IC: "010201-07-0231", contact: "012-1286028", emergency: "012-1286023", gender: 'F', dateIn: Date(), password: "unit" },
-    { photo: "assets/images/profile-image.png", unit: "D-02-13", name: "Kee Jia Tong", IC: "010228-07-0111", contact: "014-1286028", emergency: "012-1286497", gender: 'F', dateIn: Date(), password: "unit" },
-    { photo: "assets/images/logo.png", unit: "A-01-09", name: "Bee Jia Ying", IC: "011201-07-0141", contact: "010-21286028", emergency: "012-1286666", gender: 'F', dateIn: Date(), password: "unit" },
-    { photo: "assets/images/admin.png", unit: "C-01-03", name: "Ahmad Ali", IC: "981010-07-0211", contact: "018-3126028", emergency: "012-1286322", gender: 'M', dateIn: Date(), password: "unit" }
-]
+    <!-- Outermost Container -->
+    <div class="container-fluid">
+        <!--Outer Row -->
+        <div class="row flex-nowrap">
 
-// Request Data List
-var requests = [{ unit: "B-01-03", debt: 1050, date: "27/04/2022"}, { unit: "A-01-09", debt: 0, date: "26/04/2022"}]
+            <!--////////////////////
+                Sidebar Start
+            ////////////////////-->
 
-// Vistor Data List
-var visitors = [{ date: "28/04/2022", name: "Mr Suddenly", unit: "D-01-09", car:"PNG3117", contact:"012-9876543"},
-{ date: "28/04/2022", name: "Mr Handsome", unit: "A-01-10", car:"PNK3117", contact:"016-9123543"},
-{ date: "29/04/2022", name: "Ms Beauty", unit: "C-10-10", car:"WAP3228", contact:"012-9877293"},]
+            <div class="col-auto col-md-3 col-lg-3 col-xl-2 px-sm-2 py-4 pe-4 bg-white" id="sidebar">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <!-- Logo Area -->
+                    <a class="mx-auto" id="logo" href="admin-dashboard.html"
+                        class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline"><img src="assets/images/admin.png" alt="Bonds Logo"
+                                width="150"></span>
+                        <span class="fs-5 d-sm-none"><img src="assets/images/admin-favicon.png" alt="Bonds Logo"
+                                width="30"></span>
+                    </a>
 
-/* Build tables functions  */
-function buildTable(tableID) {
-    //initialize datatable
-    $(tableID).DataTable({
-        "initComplete": function (settings, json) {
-            $(tableID).wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
-        },
-        "scrollCollapse": true,
-        language: {
-            paginate: {
-                next: '<i class="fa fa-angle-double-right" aria-hidden="true"></i>',
-                previous: '<i class="fa fa-angle-double-left" aria-hidden="true"></i>'
-            }
-        }
-    })
-}
+                    <!-- Menu Start -->
+                    <ul class="mx-auto nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mt-4"
+                        id="menu">
+                        <li class="nav-item mt-2">
+                            <a href="admin-dashboard.html" class="nav-link  menu_a">
+                                <i class="fs-5 bi bi-house"></i> <span
+                                    class="fs-6 ms-1 d-none d-sm-inline">Dashboard</span>
+                            </a>
+                        </li>
 
-function rebuildTable(tableID) {
-    $(tableID).DataTable().destroy();
-    console.log(tableID)
-    if (tableID === '#UserTable') {
-        buildUserContent('#UserTableBody')
-    } else {
-        buildRequestContent('#RequestTableBody')
-    }
-    buildTable(tableID)
-}
+                        <li class="nav-item mt-2">
+                            <a href="admin-manageuser.html" class="nav-link menu_a">
+                                <i class="fs-5 bi bi-people"></i><span class="fs-6 ms-1 d-none d-sm-inline">Manage
+                                    User</span>
+                            </a>
+                        </li>
 
+                        <li class="nav-item mt-2">
+                            <a href="admin-managecovid.html" class="nav-link menu_a">
+                                <i class="fs-5 bi bi-shield-plus"></i><span class="fs-6 ms-1 d-none d-sm-inline">Covid
+                                    19</span>
+                            </a>
+                        </li>
 
-function buildUserContent(tableBody) {
-    $(tableBody).empty() //clear the html first
-    console.log(residents.length)
-    for (resident of residents) {
-        //用template literal (``) 来一次过include所有html 和 string. 用${} 来写 variable
-        newRow =
-            `<tr onclick="editRow('${resident.unit}')">
-                <td> ${resident.unit} </td>
-                <td> ${resident.name} </td>
-                <td> ${resident.gender} </td>
-                <td> ${resident.IC} </td>
-                <td> ${resident.contact} </td>                    
-                <td> ${resident.emergency} </td>
-                <td><button type="button" class="btn" onclick="editRow('${resident.unit}')"><i class="bi bi-pencil-square text-primary"></i></button>
-                <button type="button" class="btn" onclick="deleteUser('${resident.unit}')"><i class="bi bi-trash3 text-danger"></i></button>
-                </td>
-            </tr>
-            `
-        $(tableBody).append(newRow)
-    }
-}
+                        <li class="nav-item mt-2">
+                            <a href="admin-maintenance.html" class="nav-link menu_a">
+                                <i class="fs-5 bi bi-wrench-adjustable-circle"></i><span
+                                    class="fs-6 ms-1 d-none d-sm-inline">Issues</span>
+                            </a>
+                        </li>
 
+                    </ul>
+                    <!-- Menu End -->
+                    <hr>
 
-function buildRequestContent(tableBody) {
-    $(tableBody).empty() //clear the html first
-    console.log(requests.length)
-    for (request of requests) {
-        //match id to get residents data
-        for (resident of residents) {
-            if (resident.unit === request.unit) {
-                var name = resident.name
-                var contact = resident.contact
-            }
-        }
-        //用template literal (``) 来一次过include所有html 和 string. 用${} 来写 variable
-        newRow =
-            `<tr onclick="editRow('${request.unit}')">
-                <td> ${request.unit} </td>
-                <td> ${name} </td>
-                <td> ${request.debt} </td>
-                <td> ${request.date} </td>
-                <td> ${contact} </td>                   
-                <td><button type="button" class="btn" onclick="approveDeletion('${request.unit}')"><i class="bi bi-check-square text-primary"></i></button>
-                </td>
-            </tr>
-            `
-        $(tableBody).append(newRow)
-    }
-}
+                    <!-- Profile Start -->
+                    <div class="dropdown w-100 mb-5 py-md-2" id="profile">
+                        <a href="#" class=" text-decoration-none d-flex align-items-center justify-content-center"
+                            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="">
+                                <img src="assets/images/profile-image.png" alt="profile" width="50" height="50"
+                                    class="rounded-circle">
+                            </div>
 
-function buildVisitorContent(tableBody) {
-    $(tableBody).empty() //clear the html first
-    console.log(visitors.length)
-    for (visitor of visitors) {
-        //用template literal (``) 来一次过include所有html 和 string. 用${} 来写 variable
-        newRow =
-            `<tr>
-                <td> ${visitor.date} </td>
-                <td> ${visitor.name} </td>
-                <td> ${visitor.unit} </td>
-                <td> ${visitor.car} </td>
-                <td> ${visitor.contact} </td>
-            </tr>
-            `
-        $(tableBody).append(newRow)
-    }
-}
-
-/* Build modal functions */
-function buildModal() {
-    $('#ModalBody').empty() //clear the html first
-    newBody =
-        `<form id="form">
-            <div class="mb-3">
-                <label for="unit" class="col-form-label">Unit:</label>
-                <input type="text" class="form-control" id="unit" pattern="[A-Z]{1}-[0-9]{2}-[0-9]{2}" placeholder="A-10-13" required>
+                            <span class="d-none d-sm-inline ps-1">
+                                <div class="">
+                                    <h6 class="fw-bold">ADMIN</h6>
+                                    <h6>Manager</h6>
+                                </div>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
+                            <li>
+                                <a class="dropdown-item text-primary" href="profile.html">
+                                    <i class="fs-6 bi bi-person"></i>
+                                    <span class="ms-2">Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item text-danger" href="index.html">
+                                    <i class="fs-6 bi bi-box-arrow-right"></i>
+                                    <span class="ms-2">Logout</span>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <!-- Profile End -->
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="name" class="col-form-label">Resident Name:</label>
-                <input type="text" class="form-control" id="name" required>
+
+
+            <!--////////////////////
+                Sidebar End
+            ////////////////////-->
+
+            <!--////////////////////
+                Right Container Start
+            ////////////////////-->
+            <div class="py-4 mx-4 col" id="right_container">
+
+                <!--////////////////////
+                    Top Bar Start
+                ////////////////////-->
+
+                <div class="container-fluid ps-2" id="topbar_container">
+                    <nav class="navbar navbar-expand-lg navbar-light mt-3" id="topbar">
+                        <div class="container-fluid">
+                            <!-- Page Title -->
+                            <h2 class="navbar-brand fw-bolder fs-2 mydarkgreen" id="page_title">Bonds Admin</h2>
+
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <span class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <form class="d-flex ms-auto me-auto p-0">
+                                    <input class="form-control border-0 rounded-0 rounded-start" type="search"
+                                        placeholder="Search" aria-label="Search" id="top_searchbar">
+                                    <button class="btn btn-outline-none bg-white rounded-0 rounded-end w-md-25"
+                                        type="submit"><i class="bi bi-search fs-5"></i></button>
+                                </form>
+
+                                <ul class="navbar-nav ms-auto me-3">
+
+                                    <!-- chat icon -->
+                                    <li class="nav-item dropdown">
+
+                                        <a title="Messages" class="nav-link" href="#" id="notification-dropdown"
+                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="mygreen bi bi-chat-dots-fill fs-3"></i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end"
+                                            aria-labelledby="notification-dropdown">
+                                            <li><a class="dropdown-item" href="#"><img class="rounded-circle"
+                                                        src="assets/images/profile-image.png" width="30" alt="">I Love
+                                                    You</a>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item" href="#"><img class="rounded-circle"
+                                                        src="assets/images/profile-image.png" width="30" alt="">I Hate
+                                                    You</a>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item" href="#"><img class="rounded-circle"
+                                                        src="assets/images/profile-image.png" width="30" alt="">I Want
+                                                    You</a>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <!-- <li><hr class="dropdown-divider"></li> -->
+                                            <li><a class="dropdown-item text-center mygreen" href="chat.html">View All
+                                                    Chats</a></li>
+                                        </ul>
+                                    </li>
+                                    <!-- chat icon end -->
+                                    <li class="nav-item dropdown">
+
+                                        <a title="Announcements" class="nav-link" href="#" id="notification-dropdown"
+                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="mygreen bi bi-megaphone-fill fs-3"></i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end"
+                                            aria-labelledby="notification-dropdown">
+                                            <li><a class="dropdown-item" href="#">Admin Have Made an Announcement</a>
+                                            </li>
+
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item" href="#">Basketball Competition 6pm</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item" href="#">Electric Cutoff 8-10pm</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item text-center mygreen"
+                                                    href="admin-announcement.html">View All Announcements</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item dropdown">
+
+                                        <a title="Make Report" class="nav-link" role="button" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">
+                                            <i class="mygreen bi bi-exclamation-diamond-fill fs-3"></i>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <button label="Get Suppport" class="me-lg-3 btn btn_mygreen"><i
+                                        class="bi bi-question-circle me-1"></i>Help Requests</button>
+
+                            </span>
+                        </div>
+                    </nav>
+                </div>
+
+
+                <!--////////////////////
+                     Top Bar End
+                ////////////////////-->
+
+                <!-- Container Under Right Container -->
+                <div class="container main_content_container">
+                    <div class="row">
+
+                        <!-- ***************************************************************
+                                     PUT YOUR CONTENT BELOW 
+                 *******************************************************************-->
+
+                        <div class="col-12 mycontainer mx-auto">
+                            <div class="title d-flex align-items-center mb-2">
+                                <h2>Resident Accounts</h2>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="addRow()"><i
+                                    class="bi bi-plus-square"></i> Register New Resident</button>
+
+                            <!-- User Table Start -->
+                            <table class="table table-hover" id="UserTable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Unit Number</th>
+                                        <th scope="col">Host Name</th>
+                                        <th scope="col">Gender</th>
+                                        <th scope="col">IC Number</th>
+                                        <th scope="col">Contact Number</th>
+                                        <th scope="col">Emergency Number</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="UserTableBody">
+
+                                </tbody>
+                            </table>
+                            <!-- User Table End -->
+
+                        </div>
+
+                        <div class="col-12 mycontainer mt-4">
+                            <div class="title d-flex align-items-center mb-2">
+                                <h2>Stop Rental Requests</h2>
+                            </div>
+                            <!-- Request Table Start -->
+                            <table class="table table-hover" id="RequestTable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Unit Number</th>
+                                        <th scope="col">Host Name</th>
+                                        <th scope="col">Debt</th>
+                                        <th scope="col">Date Request</th>
+                                        <th scope="col">Contact Number</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="RequestTableBody">
+
+                                </tbody>
+                            </table>
+                            <!-- Request Table End -->
+                        </div>
+
+                        <div class="col-12 mycontainer mt-4">
+                            <div class="title d-flex align-items-center mb-2">
+                                <h2>Upcoming Visitors</h2>
+                            </div>
+                            <!-- Visitor Table Start -->
+                            <table class="table table-hover" id="VisitorTable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Visitor Name</th>
+                                        <th scope="col">Visiting Unit</th>
+                                        <th scope="col">Car Plate</th>
+                                        <th scope="col">Visitor Contact</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="VisitorTableBody">
+
+                                </tbody>
+                            </table>
+                            <!-- Visitor Table End -->
+                        </div>
+
+                        <!-- Modal Template -->
+                        <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="AddModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="AddModalLabel">Add New Resident: </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body" id="ModalBody">
+
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Update/Delete Pop-up Modal Start-->
+                        <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body d-flex flex-column align-items-center" id="alert-content">
+                                    </div>
+                                    <div class="modal-footer" id="alert-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Update/Delete Pop-up Modal End-->
+
+
+                        <!-- ### CHANGE the innner text TO CHANGE THE TOPBAR TITLE -->
+                        <script>$("#page_title").text("Manage Residents")</script>
+                        <!-- ### CHANGE the innner text TO CHANGE THE TITLE -->
+                        <script>$("title").text("Admin | Manage Residents")</script>
+                        <!-- (Included In This file Only)Manage User JS -->
+                        <script src="assets/js/manageuser.js"></script>
+
+                        <!-- ***************************************************************
+                            PUT YOUR CONTENT ABOVE (remember to change title)
+                 *******************************************************************-->
+                    </div><!-- END Row under Right Container -->
+                </div>
+                <!--END Container under Right Container  -->
             </div>
-            <div class="mb-3">
-                <label for="gender" class="col-form-label">Gender:</label>
-                <input type="radio" id="F" name="gender" value="F" required>
-                <label for="F">Female</label>
-                <input type="radio" id="M" name="gender" value="M">
-                <label for="M">Male</label>
-            </div>
-            <div class="mb-3">
-                <label for="ic" class="col-form-label">IC Number: (YYMMDD-XX-XXXX)</label>
-                <input type="text" class="form-control" id="ic" pattern="[0-9]{6}-[0-9]{2}-[0-9]{4}" required placeholder="010616-14-1303">
-            </div>
-            <div class="mb-3">
-                <label for="contact" class="col-form-label">Phone Number:</label>
-                <input type="text" class="form-control" id="contact" required>
-            </div>
-                <div class="mb-3">
-                <label for="date-move-in" class="col-form-label">Date Move In:</label>
-                <input type="datetime-local" class="form-control" id="date-move-in" required>
-            </div>
-            <div class="mb-3">
-                <label for="emergency" class="col-form-label">Emergency Phone Number: </label>
-                <input type="text" class="form-control" id="emergency" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="col-form-label">Password: </label>
-                <input type="password" class="form-control" id="password" required>
-            </div>
-            <input type="submit"  class="me-lg-3 btn btn-primary" id="submit">
-        </form> `
-    $('#ModalBody').append(newBody)
-}
+            <!--END Right Container  -->
+        </div> <!-- END Row -->
+    </div> <!-- END Outermost Container -->
 
-function buildAlert(action, unit, string) {
-    $('#alert-content').empty() 
-    $('#alert-footer').empty() 
-    if(action==="update"){ //update modal alert
-        newBody= `
-        <div class="modal-body d-flex flex-column align-items-center">
-            <div class="mx-auto">
-                <img src="https://cdn.dribbble.com/users/251873/screenshots/9289747/13540-sign-for-success-alert.gif"
-                    alt="success-image" width="200">
-            </div>
-            <div class="alert" role="alert">
-                Information updated!
-            </div>
-        </div>`
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <!-- Fontawesome CDN -->
+    <script src="https://kit.fontawesome.com/db51efbc0b.js" crossorigin="anonymous"></script>
+    <!-- My Custom JS -->
+    <script src="assets/js/script.js"></script>
+</body>
 
-        newFooter = `
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
-        `
-    }else{ //delete modal alert
-        newBody= `
-        <div class="modal-body d-flex flex-column align-items-center">
-            <p> ${string} ${unit} ?</p>
-        </div>`
-
-        newFooter = `
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="confirm">OK</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        `
-    }
-    $('#alert-content').append(newBody) 
-    $('#alert-footer').append(newFooter) 
-}
-
-/* CRUD functions  */
-function deleteUser(unit) {
-    event.stopPropagation();
-    buildAlert(null, unit, "Delete user account with id: ");
-    $('#alertModal').modal('show')
-    $('#confirm').click(function(){
-        deleteRow(unit, residents, '#UserTable');
-    });
-}
-
-function approveDeletion(unit) {
-    event.stopPropagation();
-    buildAlert(null, unit, "Stop rental with: ");
-    $('#alertModal').modal('show')
-    $('#confirm').click(function(){
-        deleteRow(unit, residents, '#UserTable');
-        deleteRow(unit, requests, '#RequestTable');
-    });
-}
-
-function deleteRow(unit, array, tableID) {
-    event.stopPropagation();//stop the propagation (按了editbuton后，不会再trigger Row 的onclick)
-    console.log(array);
-    console.log("unit is: " + unit);
-    array.forEach(function (resident, index) {
-        console.log('index:' + index + ' resident' + resident.unit);
-        if (resident.unit == unit) {
-            array.splice(index, 1); //remove the object from array
-            rebuildTable(tableID)
-        }
-    });
-
-}
-
-function getGender(gender, selection) {
-    if (gender === 'F') {
-        selection += ' input[id="F"]'
-        $(selection).prop('checked', true);
-    }
-    else {
-        selection += ' input[id="M"]'
-        $(selection).prop('checked', true);
-    }
-}
-
-function editRow(unit) {
-    event.stopPropagation();
-
-    //building and showing modal
-    buildModal();
-    $('#Modal').on('show.bs.modal', function () {
-        $('#AddModalLabel').text('Update Resident: ');
-    });
-    $('#Modal').modal('show');
-
-    //show 本来的value
-    console.log("EDIT ROW called")
-    for (resident of residents) {
-        if (resident.unit === unit) {
-            $('#Modal input[id="unit"]').val(resident.unit)
-            $('#Modal input[id="unit"]').prop("disabled", true)
-            $('#Modal input[id="name"]').val(resident.name)
-            $('#Modal input[id="ic"]').val(resident.IC)
-            $('#Modal input[id="contact"]').val(resident.contact)
-            $('#Modal input[id="emergency"]').val(resident.emergency)
-            $('#Modal input[id="date-move-in"]').val(resident.dateIn)
-            $('#Modal input[id="date-move-in"]').prop("disabled", true)
-            $('#Modal input[id="password"]').val(resident.password)
-            getGender(resident.gender, '#Modal')
-        }
-    }
-
-    $("#form").submit(function (e) {
-        console.log("editRow called")
-        updateResident(unit)
-        e.preventDefault();
-        $("#Modal").modal('hide');
-    })
-}
-
-function updateResident(unit) {
-    var name = $('#Modal input[id="name"]').val()
-    var IC = $('#Modal input[id="ic"]').val()
-    var contact = $('#Modal input[id="contact"]').val()
-    var emergency = $('#Modal input[id="emergency"]').val()
-    var gender = $("#Modal input[name='gender']:checked").val();
-    var password = $('#Modal input[id="password"]').val();
-
-    for (resident of residents) {
-
-        if (resident.unit === unit) {
-            resident.name = name
-                resident.IC = IC
-                resident.gender = gender
-                resident.contact = contact
-                resident.emergency = emergency
-                resident.password = password
-                buildAlert("update",null,null)
-                $('#alertModal').modal('show')
-
-            rebuildTable('#UserTable')
-            rebuildTable('#RequestTable')
-        }
-    }
-}
-
-
-function addRow() {
-    console.log("addRow called")
-
-    //building and showing modal
-    buildModal();
-    $('#Modal').on('show.bs.modal', function () {
-        $('#AddModalLabel').text('Add New Resident: ');
-    });
-    $('#Modal').modal('show');
-
-    // Submit Form
-    $("#form").submit(function (e) {
-
-        var newResident = {}
-
-        var photo = "assets/images/profile-image.png"
-        var unit = $('input[id="unit"]').val()
-        var name = $('input[id="name"]').val()
-        var IC = $('input[id="ic"]').val()
-        var contact = $('input[id="contact"]').val()
-        var emergency = $('input[id="emergency"]').val()
-        var gender = $("input[name='gender']:checked").val();
-        var password = $('input[id="password"]').val();
-
-        var dateIn = new Date();
-
-
-
-        if (photo === '' || unit === '' || name === '' || IC === '' || contact === '' || emergency === '' || gender === '' || dateIn === '' || password === '') {
-            alert("All fields must have a valid value.");
-        } else {
-            //create new object
-            newResident = {
-                photo: photo,
-                unit: unit,
-                name: name,
-                IC: IC,
-                contact: contact,
-                emergency: emergency,
-                gender: gender,
-                dateIn: dateIn,
-                password: password
-            }
-
-            //insert into main list
-            residents.push(newResident)
-            //call build row
-            rebuildTable('#UserTable')
-            $("#form").trigger("reset");
-        }
-        e.preventDefault();
-    });
-
-}
+</html>
