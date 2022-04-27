@@ -1,0 +1,620 @@
+/********************
+GLOBAL VALUES 
+********************/
+
+/*
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  #E7F9F9 light-green bg
+  #46CDCF primary-green
+  #3D84A8 dark
+*/
+
+/********************
+Global Theme 
+********************/
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #e7f9f9;
+  width: 100%;
+  height: 100vh;
+}
+
+body{
+  overflow-x: hidden;
+}
+
+.mycontainer {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 30px !important;
+  background-color: white !important;
+  padding: 1.5rem !important;
+}
+
+.btn_mygreen,
+.bg_mygreen {
+  background-color: #46cdcf;
+  border-color: #46cdcf;
+  color: #fff;
+}
+
+.btn_mygreen:hover,
+.btn_mygreen:focus {
+  color: #fff;
+  background-color: #46cdcf;
+  border-color: #46cdcf;
+  /* transition: 0.25s;
+  transform: translateY(-0.25em); */
+}
+
+a {
+  color: #46cdcf;
+}
+
+a:hover {
+  color: #3d84a8;
+}
+
+.mygreen {
+  color: #46cdcf;
+}
+
+.mydarkgreen,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #3d84a8;
+}
+
+/** Scroll Bar **/
+/* width */
+::-webkit-scrollbar {
+
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px rgba(149, 157, 165, 0.75);
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #46cdcf; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(70, 205, 207,0.75);
+}
+
+/********************
+Global Theme End 
+********************/
+
+/********************
+Styling Sidebar 
+********************/
+
+#sidebar {
+  border-radius: 0 50px 0 0;
+  z-index: 20;
+  position: fixed;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+/* Change The Sidebar Nav Item To Fill Width */
+.nav-item {
+  width: 100%;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: #46cdcf !important;
+  color: white !important;
+}
+
+#menu .nav-link {
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+.nav-link {
+  color: #46cdcf !important;
+}
+
+.nav-link:hover {
+  color: #46cdcf !important;
+  opacity: 0.8;
+}
+
+#menu .nav-link:hover:not(.active) {
+  background-color: #e7f9f9;
+}
+
+#profile {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 30px !important;
+  background-color: white !important;
+  
+}
+#profile:hover {
+  transform: translate3d(0, -3px, 0 );
+  box-shadow: 0 2rem 5rem 0 rgba(0, 0, 0, 0.1);
+}
+
+/********************
+ Sidebar End 
+********************/
+
+/********************
+Styling Topbar 
+********************/
+
+#topbar_container {
+  padding: 0 5% 0 0;
+  top: 0;
+  background-color: #e7f9f9;
+  position: fixed;
+  z-index: 10;
+}
+
+#page_title {
+  color: #3d84a8;
+}
+
+/* Responsive Sidebar with topbar and right container width */
+@media (max-width: 575.98px) {
+  #right_container {
+    padding-left: 25%;
+  }
+  #topbar {
+    width: 65%;
+  }
+}
+@media (min-width: 576px) {
+  #right_container {
+    padding-left: 35%;
+  }
+  #topbar {
+    width: 55%;
+  }
+}
+@media (min-width: 768px) {
+  #right_container {
+    padding-left: 30%;
+  }
+  #topbar {
+    width: 70%;
+  }
+}
+@media (min-width: 1200px) {
+  #right_container {
+    padding-left: 20%;
+  }
+  #topbar {
+    width: 80%;
+  }
+}
+@media (min-width: 1500px) {
+  #right_container {
+    padding-left: 20%;
+  }
+  #topbar {
+    width: 70%;
+  }
+}
+/* Responsive bar end */
+
+#top_searchbar:focus,
+.btn:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+
+/********************
+Topbar End 
+********************/
+
+/********************
+Main Content Continer (inside right container below the topbar)  
+********************/
+.main_content_container {
+  margin-top: 100px;
+}
+
+/********************
+Main Content Container End 
+********************/
+
+/*************************
+Profile START  
+***************************/
+#confirmationDiv {
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  border: 3px solid black;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  background-color: white;
+  text-align: center;
+  z-index: 999;
+}
+#confirmationDiv input {
+  margin-top: 10px;
+  margin-left: 15px;
+  border: 3px solid black;
+  box-shadow: 0 0 0 black;
+  transition: all 0.2s;
+}
+#confirmationDiv input:hover {
+  box-shadow: 0.4rem 0.4rem 0 black;
+  transform: translate(-0.4rem, -0.4rem);
+}
+#confirmationDiv input:active {
+  box-shadow: 0 0 0 black;
+  transform: translate(0, 0);
+}
+#deleteDiv {
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  border: 3px solid black;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  background-color: white;
+  text-align: center;
+  max-width: 500px;
+  z-index: 999;
+}
+#deleteDiv input {
+  margin-top: 10px;
+  margin-left: 15px;
+  border: 3px solid black;
+  box-shadow: 0 0 0 black;
+  transition: all 0.2s;
+}
+#deleteDiv input:hover {
+  box-shadow: 0.4rem 0.4rem 0 black;
+  transform: translate(-0.4rem, -0.4rem);
+}
+#deleteDiv input:active {
+  box-shadow: 0 0 0 black;
+  transform: translate(0, 0);
+}
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.5);
+  display: none;
+  z-index: 999;
+}
+#overlayDelete {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.5);
+  display: none;
+  z-index: 999;
+}
+.profileImgSide {
+  position: fixed;
+  right: 0%;
+  height: 100%;
+  border-style: groove;
+  width: 20%;
+  overflow-y: auto;
+  background-color: white;
+  border-top-left-radius: 25px;
+}
+.profileImgSide .details {
+  text-align: center;
+}
+.profileImgSide .riskStatus {
+  background-color: #0d6efd;
+  display: flex;
+  width: 90%;
+  min-height: 80px;
+  margin: auto;
+  margin-bottom: 3%;
+  color: #f3f8ff;
+  border-style: solid;
+  border-radius: 10px;
+}
+.profileImgSide .riskStatus i {
+  font-size: 60px;
+  margin: auto;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.profileImgSide .riskStatus h3 {
+  color: #f3f8ff;
+  font-size: 20px;
+  font-weight: bold;
+}
+.profileImgSide .riskStatus h5 {
+  font-size: 15px;
+  color: #f3f8ff;
+  font-weight: lighter;
+  margin-bottom: 4px;
+  margin-top: 10px;
+}
+.profileImgSide .vacinnationStatus {
+  background-color: yellow;
+  min-height: 80px;
+  width: 90%;
+  display: flex;
+  margin: auto;
+  margin-bottom: 10%;
+  border-style: solid yellow;
+  border-radius: 10px;
+}
+.profileImgSide .vacinnationStatus i {
+  font-size: 50px;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 8%;
+}
+.profileImgSide .vacinnationStatus h5 {
+  color: black;
+  font-size: 15px;
+  font-weight: lighter;
+  margin-bottom: 4px;
+  margin-top: 10px;
+}
+.profileImgSide .vacinnationStatus h3 {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+.profileImgSide #profile-image {
+  max-width: 200px;
+  max-height: 200px;
+  min-height: 200px;
+  min-width: 200px;
+  place-items: center;
+  border: double 15px #46cdcf;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.profileImgSide .image {
+  text-align: center;
+}
+.editImage {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 180px;
+}
+.modals {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.6rem 3rem;
+  border: 3px solid black;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+.message {
+  font-size: 1.1rem;
+  margin-bottom: 1.6rem;
+  margin-top: 0;
+}
+.modals .btn {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  background: white;
+  padding: 0.3rem 3.4rem;
+
+  margin-right: 2.6rem;
+  border: 3px solid black;
+  box-shadow: 0 0 0 black;
+  transition: all 0.2s;
+  min-width: 200px;
+}
+.modals .btn:last-child {
+  margin: 0;
+}
+.modals .btn:hover {
+  box-shadow: 0.4rem 0.4rem 0 black;
+  transform: translate(-0.4rem, -0.4rem);
+}
+.modals .btn:active {
+  box-shadow: 0 0 0 black;
+  transform: translate(0, 0);
+}
+.modals .options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.modals .cross {
+  position: relative;
+  margin-top: -20px;
+  margin-right: -100%;
+  cursor: pointer;
+}
+.form-label {
+  font-weight: bold;
+}
+.row {
+  margin-bottom: 20px;
+}
+.minimizeProfileSide {
+  position: fixed;
+  right: 0%;
+  bottom: 0%;
+  border-style: groove;
+  width: 20%;
+  background-color: white;
+  border-top-left-radius: 25px;
+  display: none;
+  cursor: pointer;
+}
+.minimizeProfileSide img {
+  width: 19%;
+  height: 19%;
+  border-radius: 50%;
+}
+.minimizeProfileSide h6 {
+  margin: auto;
+}
+#toggleSideButton {
+  text-align: center;
+  cursor: pointer;
+}
+.profileSideBar {
+  right: 0%;
+  height: 100%;
+  border-style: groove;
+  width: 20%;
+  overflow-y: auto;
+  background-color: white;
+  border-top-left-radius: 25px;
+}
+.profile_container .form-control:disabled, select:disabled option{
+  background: white;
+  border: none;
+  margin-left: -12px;
+}
+
+.profile_container select:disabled{
+  background: white;
+  border: none;
+  margin-left: -12px;
+}
+
+/*************************
+Profile END  
+***************************/
+
+
+/*************************
+Explore START  
+***************************/
+
+/* Dropdown Button */
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.button_color {
+  background-color: #3D84A8;
+  border: 0;
+}
+
+.dropdown_bg_color {
+  background-color: #48466D
+}
+.text-color {
+    color: #FFFFFF;
+}
+.tab{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-left: 15px;
+  font-size: larger;
+}
+
+/* hover animation */
+.tab-content .card:hover{
+  transform: translate3d(0, -3px, 0 );
+  box-shadow: 0 2rem 5rem 0 rgba(0, 0, 0, 0.1);
+}
+
+/*************************
+Explore END  
+***************************/
+
+/***************************
+Dashboard
+***************************/
+
+/* Style The Image Carousel */
+/* img{
+  background-size: cover;
+  background-position: center;
+} */
+
+
+/***************************
+Slick Slider
+****************************/
+.slider {
+  margin: auto;
+  width: 80%;
+}
+
+.slick-slide {
+  margin: 0px;
+}
+
+.slick-slide img {
+  width: 100%;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #46CDCF !important;
+}
+
+.slick-slide {
+  transition: all ease-in-out .3s;
+  opacity: .2;
+}
+
+.slick-active {
+  opacity: .5;
+}
+
+.slick-current {
+  opacity: 1;
+}
+/* Slider End */
+
+/* *****************
+Chat Start
+**************** */
+#person-container {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+#chat-container {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  padding-bottom: 10px;
+}
+/* *****************
+Chat End
+**************** */

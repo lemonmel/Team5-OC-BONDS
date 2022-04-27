@@ -1,0 +1,305 @@
+/* 
+ADMIN CSS
+COMMON Values:
+
+box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+#F3F8FF light-blue bg
+#0d6efd primary-blue
+#183B68 dark-blue
+*/
+
+/********************
+Global Theme 
+********************/
+html,body{
+    padding: 0;
+    margin: 0;
+    background-color: #F3F8FF;
+    width: 100%;
+    height: 100vh;
+
+}
+
+.mycontainer{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 30px !important;
+    background-color: white !important;
+    padding: 1.5rem !important;
+}
+
+.btn_mygreen,	
+.bg_mygreen {	
+  background-color: #0d6efd;	
+  border-color: #0d6efd;	
+  color: #fff;	
+}
+
+.btn_mygreen:hover,
+.btn_mygreen:focus{
+    color: #fff;
+    background-color:#0d6efd;
+    border-color: #0d6efd;
+    /* transition: 0.25s;
+    transform: translateY(-0.25em); */
+}
+
+a{
+    color: #0d6efd;
+}
+
+a:hover{
+    color: #0d6efd;
+}
+
+.mygreen {	
+    color: #0d6efd;	
+}
+
+.mydarkgreen, h1,h2,h3,h4,h5,h6{
+    color: #183B68;
+}
+
+/* Scroll Bar */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #0d6efd; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(13, 110, 253, 0.75);
+}
+
+
+/********************
+Global Theme End 
+********************/
+
+
+
+
+/********************
+Styling Sidebar 
+********************/
+
+#sidebar{
+    border-radius: 0 50px 0 0;
+    z-index: 20;
+    position: fixed;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+/* Change The Sidebar Nav Item To Fill Width */
+.nav-item{
+    width: 100%;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background-color: #0d6efd;
+    color: white;
+}
+
+#menu .nav-link{
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.nav-link{
+    color: #0d6efd;
+}
+
+.nav-link:hover{
+    color: #0d6efd;
+    opacity: 0.8;
+}
+
+#menu .nav-link:hover:not(.active){
+    background-color: #F3F8FF;
+}
+
+#profile{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 30px !important;
+    background-color: white !important;
+}
+
+
+/********************
+ Sidebar End 
+********************/
+
+
+
+
+/********************
+Styling Topbar 
+********************/
+
+#topbar_container{
+    padding: 0 5% 0 0;
+    top:0;
+    background-color: #F3F8FF;
+    position: fixed;
+    z-index: 10;
+}
+
+#page_title{
+    color: #183B68;
+}
+
+/* Responsive Sidebar with topbar and right container width */
+@media (max-width: 575.98px) {
+    #right_container {
+      padding-left: 25%;
+    }
+    #topbar {
+      width: 65%;
+    }
+  }
+  @media (min-width: 576px) {
+    #right_container {
+      padding-left: 35%;
+    }
+    #topbar {
+      width: 55%;
+    }
+  }
+  @media (min-width: 768px) {
+    #right_container {
+      padding-left: 30%;
+    }
+    #topbar {
+      width: 70%;
+    }
+  }
+  @media (min-width: 1200px) {
+    #right_container {
+      padding-left: 20%;
+    }
+    #topbar {
+      width: 80%;
+    }
+  }
+  @media (min-width: 1500px) {
+    #right_container {
+      padding-left: 20%;
+    }
+    #topbar {
+      width: 80%;
+    }
+  }
+  /* Responsive bar end */
+
+#top_searchbar:focus, .btn:focus{
+    outline: none !important;
+    box-shadow: none;  
+}
+
+/********************
+Topbar End 
+********************/
+
+/********************
+Main Content Continer (inside right container below the topbar)  
+********************/
+.main_content_container{
+    margin-top:100px ;
+}
+
+/********************
+Main Content Container End 
+********************/
+
+
+/********************
+Datatable Start (Manage Covid and User) 
+********************/
+
+#UserTableBody tr,
+#RequestTableBody tr,
+#report_table tr
+:hover{
+    cursor: pointer;
+}
+
+/* all paginate button */
+.dataTables_wrapper .dataTables_paginate span .paginate_button {
+  font-weight: bold;
+  height: 50px;
+  width: 50px;
+  padding: 0;
+  margin-left: 0px;
+  margin: 0 2px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 1rem;
+  color: #0d6efd !important;
+  border: 0 !important;
+} 
+
+/* To Style the datatable pagination prev and next button*/
+.dataTables_wrapper .dataTables_paginate .paginate_button.previous, 
+.dataTables_wrapper .dataTables_paginate .paginate_button.next {
+  margin-left: 0px;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 2px;
+  border: 0 !important;
+  height: 50px;
+  width: 50px;
+  padding: 0;
+  border-radius: 1rem;
+  line-height: 54px;
+  display: inline-block;
+  color: #0d6efd !important;
+}
+/* next previous */
+.dataTables_wrapper .dataTables_paginate .paginate_button.previous:hover, 
+.dataTables_wrapper .dataTables_paginate .paginate_button.next:hover{
+  background: #0d6efd !important;
+  color: #ffffff !important;
+}
+
+/* current button */
+.dataTables_wrapper .dataTables_paginate span .paginate_button.current{
+  color: #0d6efd !important;
+  background: #ffffff !important;
+} 
+.dataTables_wrapper .dataTables_paginate span .paginate_button.current:hover{
+  background: #0d6efd !important;
+  color: #ffffff !important;
+} 
+
+
+
+/* other paginate hover */
+.paginate_button:hover{
+    background: #0d6efd !important;
+    border:#0d6efd !important;
+    color: white !important;
+}
+
+/* outer */
+.dataTables_paginate {
+  border-radius: 1rem;
+  margin-top: 10px;
+  background: #F3F8FF;
+  padding: 5px 5px;
+}
+
+/********************
+Datatable End
+********************/
