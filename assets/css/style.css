@@ -60,6 +60,7 @@ a:hover {
   color: #46cdcf;
 }
 
+
 .mydarkgreen,
 h1,
 h2,
@@ -70,6 +71,11 @@ h6 {
   color: #3d84a8;
 }
 
+/* remove the bluecolor when clicked on dropdown item tab */
+.dropdown-item:focus{
+  background: none !important;
+  color: black;
+}
 /** Scroll Bar **/
 /* width */
 ::-webkit-scrollbar {
@@ -142,9 +148,8 @@ Styling Sidebar
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 30px !important;
   background-color: white !important;
-  
 }
-#profile:hover {
+#profile:hover, #topbar_profile:hover {
   transform: translate3d(0, -3px, 0 );
   box-shadow: 0 2rem 5rem 0 rgba(0, 0, 0, 0.1);
 }
@@ -216,6 +221,17 @@ Styling Topbar
 .btn:focus {
   outline: none !important;
   box-shadow: none;
+}
+
+/* profile background glassmor effect */
+.glassmorphism{
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 16px 0 rgba(70, 205, 207,0.15);
+  backdrop-filter: blur( 10px );
+  -webkit-backdrop-filter: blur( 1    4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.15);
+  cursor: pointer;
 }
 
 /********************

@@ -18,6 +18,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Sweet Alert CDN -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- ChatJS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Bonds</title>
 </head>
@@ -83,23 +87,23 @@
                     <div class="dropdown w-100 mb-5 py-md-2" id="profile">
                         <a href="#" class=" text-decoration-none d-flex align-items-center justify-content-center"
                             id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <div class="">
+                            <div class="my-auto">
                                 <img src="assets/images/profile-image.png" alt="profile" width="50" height="50"
                                     class="rounded-circle">
                             </div>
 
                             <span class="d-none d-sm-inline ps-1">
-                                <div class="">
-                                    <h6 class="fw-bold">Ray Guang</h6>
-                                    <h6>A100</h6>
+                                <div class="ms-1">
+                                    <h6 class="py-0 my-0">Ray Guang</h6>
+                                    <small class="text-muted py-0 my-0">A-10-13</small>
                                 </div>
                             </span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
                             <li>
-                                <a class="dropdown-item text-primary" href="profile.html">
-                                    <i class="fs-6 bi bi-person"></i>
-                                    <span class="ms-2">Profile</span>
+                                <a class="dropdown-item mygreen" href="profile.html">
+                                    <i class="fs-5 bi bi-person mygreen"></i>
+                                    <span class="ms-2 mygreen">Profile</span>
                                 </a>
                             </li>
                             <li>
@@ -107,7 +111,7 @@
                             </li>
                             <li>
                                 <a class="dropdown-item text-danger" href="index.html">
-                                    <i class="fs-6 bi bi-box-arrow-right"></i>
+                                    <i class="fs-5 bi bi-box-arrow-right"></i>
                                     <span class="ms-2">Logout</span>
                                 </a>
                             </li>
@@ -142,79 +146,77 @@
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <span class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <form class="d-flex ms-auto me-auto p-0">
-                                    <input class="form-control border-0 rounded-0 rounded-start" type="search"
-                                        placeholder="Search" aria-label="Search" id="top_searchbar">
-                                    <button class="btn btn-outline-none bg-white rounded-0 rounded-end w-md-25"
-                                        type="submit"><i class="bi bi-search fs-5"></i></button>
-                                </form>
-                                <ul class="navbar-nav ms-auto me-3">
-
-                                    <!-- chat icon -->
-                                    <li class="nav-item dropdown">
-
-                                        <a title="Messages" class="nav-link" href="#" id="notification-dropdown"
-                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="mygreen bi bi-chat-dots-fill fs-3"></i>
-                                        </a>
-                                        <ul class="dropdown-menu dropdown-menu-end"
-                                            aria-labelledby="notification-dropdown">
-                                            <li><a class="dropdown-item" href="#"><img class="rounded-circle"
-                                                        src="assets/images/profile-image.png" width="30" alt="">I Love
-                                                    You</a>
+                                
+                                <ul class="navbar-nav ms-auto">
+                                    
+                                    <!-- topbar profile start -->
+                                    <li class="nav-item dropdown ms-auto me-1">
+                                        <a href="profile.html" class="text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <div class="text-nowrap glassmorphism p-2" id="topbar_profile">
+                                                <div class="d-flex">
+                                                    <div class="my-auto">
+                                                        <img class="rounded-circle" src="assets/images/profile-image.png" alt="profile picture" width="40" height="40">
+                                                    </div>
+                                                    <div class="ms-1">
+                                                        <h6 class="py-0 my-0">Ray Guang</h6>
+                                                        <small class="text-muted py-0 my-0">A-10-13</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </a>
+                                         <ul class="dropdown-menu mt-1"
+                                            aria-labelledby="dropdownUser2">
+                                            <li>
+                                                <a class="dropdown-item mygreen" href="profile.html">
+                                                    <i class="fs-5 bi bi-person mygreen"></i>
+                                                    <span class="ms-2 mygreen">Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="#"><img class="rounded-circle"
-                                                        src="assets/images/profile-image.png" width="30" alt="">I Hate
-                                                    You</a>
-                                                <hr class="dropdown-divider">
+                                            <li>
+                                                <a class="dropdown-item text-danger" href="index.html">
+                                                    <i class="fs-5 bi bi-box-arrow-right"></i>
+                                                    <span class="ms-2">Logout</span>
+                                                </a>
                                             </li>
-                                            <li><a class="dropdown-item" href="#"><img class="rounded-circle"
-                                                        src="assets/images/profile-image.png" width="30" alt="">I Want
-                                                    You</a>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item text-center mygreen" href="chat.html">View All
-                                                    Chats</a></li>
                                         </ul>
                                     </li>
-                                    <!-- chat icon end -->
-                                    <li class="nav-item dropdown">
+                                    <!-- topbar profile end -->
+
+                                    <li class="nav-item dropdown mx-1">
 
                                         <a title="Announcements" class="nav-link" href="#" id="notification-dropdown"
                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="mygreen bi bi-megaphone-fill fs-3"></i>
+                                            <i class="mygreen bi bi-bell-fill fs-3"></i>
                                         </a>
-                                        <ul class="dropdown-menu dropdown-menu-end"
+                                        <ul class="dropdown-menu"
                                             aria-labelledby="notification-dropdown">
-                                            <li><a class="dropdown-item" href="#">Admin Have Made an Announcement</a>
+                                            <li class="pt-0"><a class="dropdown-item text-wrap" href="#">Admin changed your covid status from...</a>
                                             </li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="#">Basketball Competition 6pm</a></li>
+                                            <li><a class="dropdown-item text-wrap" href="#">Admin approved your request at _</a></li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="#">Electric Cutoff 8-10pm</a></li>
+                                            <li><a class="dropdown-item text-wrap" href="#">Your update covid report has been processed...</a></li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
                                             <li><a class="dropdown-item text-center mygreen"
-                                                    href="announcement.html">View All Announcements</a></li>
+                                                    href="announcement.html">View All Notifications</a></li>
                                         </ul>
-                                    </li>
-                                    <li class="nav-item dropdown">
-
-                                        <a title="Make Report" class="nav-link" role="button" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal" onclick="submitReportForm()">
-                                            <i class="mygreen bi bi-exclamation-diamond-fill fs-3"></i>
-                                        </a>
                                     </li>
 
                                 </ul>
-                                <a href="chat.html" label="Get Suppport" class="me-lg-3 btn btn_mygreen"><i
-                                        class="fa-solid fa-headset me-2"></i>Get Help</a>
+                                <a href="https://mail.google.com/mail/u/0/?view=cm&amp;fs=1&amp;source=mailto&amp;to=support@bonds.com" target="_blank"  title="Send Email" class="mx-1 btn btn_mygreen">
+                                    <i class="fa-solid fa-headset me-2"></i>Support</a>
+                                <!-- <a href="chat.html" label="Get Suppport" class="me-lg-3 btn btn_mygreen"><i
+                                        class="fa-solid fa-headset me-2"></i>Get Help</a> -->
+                                <!-- <a class="ms-2" href="index.html"><i class="fs-3 bi bi-box-arrow-right "></i></a> -->
                             </span>
                         </div>
                     </nav>
@@ -231,7 +233,7 @@
                         <!-- ***************************************************************
                                      PUT YOUR CONTENT BELOW 
                         (Start With A Responsive Col, with .mycontainer class)
-                 *******************************************************************-->
+                        *******************************************************************-->
                         <div class="mycontainer">
                             <div class="row d-flex align-items-center">
                                 <ul class="nav nav-tabs d-flex align-items-start" id="exploreTab" role="tablist">

@@ -76,12 +76,6 @@
                             </a>
                         </li>
 
-                        <li class="nav-item mt-2">
-                            <a href="admin-maintenance.html" class="nav-link menu_a">
-                                <i class="fs-5 bi bi-wrench-adjustable-circle"></i><span
-                                    class="fs-6 ms-1 d-none d-sm-inline">Issues</span>
-                            </a>
-                        </li>
 
                     </ul>
                     <!-- Menu End -->
@@ -92,27 +86,18 @@
                         <a href="#" class=" text-decoration-none d-flex align-items-center justify-content-center"
                             id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="">
-                                <img src="assets/images/profile-image.png" alt="profile" width="50" height="50"
-                                    class="rounded-circle">
+                                <img src="assets/images/admin.png" alt="profile" width=50 class="rounded-circle">
                             </div>
 
                             <span class="d-none d-sm-inline ps-1">
-                                <div class="">
-                                    <h6 class="fw-bold">ADMIN</h6>
-                                    <h6>Manager</h6>
+                                <div class="ms-1">
+                                    <h6 class="fw-bold py-0 my-0">ADMIN</h6>
+                                    <small class="text-muted py-0 my-0">BONDS</small>
                                 </div>
                             </span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
-                            <li>
-                                <a class="dropdown-item text-primary" href="profile.html">
-                                    <i class="fs-6 bi bi-person"></i>
-                                    <span class="ms-2">Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
+                            
                             <li><a class="dropdown-item text-danger" href="index.html">
                                     <i class="fs-6 bi bi-box-arrow-right"></i>
                                     <span class="ms-2">Logout</span>
@@ -141,7 +126,7 @@
                     <nav class="navbar navbar-expand-lg navbar-light mt-3" id="topbar">
                         <div class="container-fluid">
                             <!-- Page Title -->
-                            <h2 class="navbar-brand fw-bolder fs-2 mydarkgreen" id="page_title">Bonds Admin</h2>
+                            <h2 class="navbar-brand fw-bolder fs-2 mydarkgreen" id="page_title">Bonds App</h2>
 
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -149,83 +134,65 @@
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <span class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <form class="d-flex ms-auto me-auto p-0">
-                                    <input class="form-control border-0 rounded-0 rounded-start" type="search"
-                                        placeholder="Search" aria-label="Search" id="top_searchbar">
-                                    <button class="btn btn-outline-none bg-white rounded-0 rounded-end w-md-25"
-                                        type="submit"><i class="bi bi-search fs-5"></i></button>
-                                </form>
-
-                                <ul class="navbar-nav ms-auto me-3">
-
-                                    <!-- chat icon -->
-                                    <li class="nav-item dropdown">
-
-                                        <a title="Messages" class="nav-link" href="#" id="notification-dropdown"
-                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="mygreen bi bi-chat-dots-fill fs-3"></i>
-                                        </a>
-                                        <ul class="dropdown-menu dropdown-menu-end"
-                                            aria-labelledby="notification-dropdown">
-                                            <li><a class="dropdown-item" href="#"><img class="rounded-circle"
-                                                        src="assets/images/profile-image.png" width="30" alt="">I Love
-                                                    You</a>
-                                                <hr class="dropdown-divider">
+                                
+                                <ul class="navbar-nav ms-auto">
+                                    
+                                    <!-- topbar profile start -->
+                                    <li class="nav-item dropdown ms-auto me-1">
+                                        <a href="profile.html" class="text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <div class="text-nowrap glassmorphism p-2" id="topbar_profile">
+                                                <div class="d-flex">
+                                                    <div class="my-auto">
+                                                        <img class="rounded-circle" src="assets/images/admin.png" alt="profile picture" height="40">
+                                                    </div>
+                                                    <div class="ms-1">
+                                                        <h6 class="py-0 my-0">Admin</h6>
+                                                        <small class="text-muted py-0 my-0">BONDS</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </a>
+                                         <ul class="dropdown-menu mt-1"
+                                            aria-labelledby="dropdownUser2">
+                                            <li>
+                                                <a class="dropdown-item text-danger" href="index.html">
+                                                    <i class="fs-5 bi bi-box-arrow-right"></i>
+                                                    <span class="ms-2">Logout</span>
+                                                </a>
                                             </li>
-                                            <li><a class="dropdown-item" href="#"><img class="rounded-circle"
-                                                        src="assets/images/profile-image.png" width="30" alt="">I Hate
-                                                    You</a>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item" href="#"><img class="rounded-circle"
-                                                        src="assets/images/profile-image.png" width="30" alt="">I Want
-                                                    You</a>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <!-- <li><hr class="dropdown-divider"></li> -->
-                                            <li><a class="dropdown-item text-center mygreen" href="chat.html">View All
-                                                    Chats</a></li>
                                         </ul>
                                     </li>
-                                    <!-- chat icon end -->
-                                    <li class="nav-item dropdown">
+                                    <!-- topbar profile end -->
+
+                                    <li class="nav-item dropdown mx-1">
 
                                         <a title="Announcements" class="nav-link" href="#" id="notification-dropdown"
                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="mygreen bi bi-megaphone-fill fs-3"></i>
+                                            <i class="mygreen bi bi-bell-fill fs-3"></i>
                                         </a>
-                                        <ul class="dropdown-menu dropdown-menu-end"
+                                        <ul class="dropdown-menu"
                                             aria-labelledby="notification-dropdown">
-                                            <li><a class="dropdown-item" href="#">Admin Have Made an Announcement</a>
+                                            <li class="pt-0"><a class="dropdown-item text-wrap" href="#">Admin changed your covid status from...</a>
                                             </li>
-
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="#">Basketball Competition 6pm</a></li>
+                                            <li><a class="dropdown-item text-wrap" href="#">Admin approved your request at _</a></li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="#">Electric Cutoff 8-10pm</a></li>
+                                            <li><a class="dropdown-item text-wrap" href="#">Your update covid report has been processed...</a></li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
                                             <li><a class="dropdown-item text-center mygreen"
-                                                    href="admin-announcement.html">View All Announcements</a></li>
+                                                    href="announcement.html">View All Notifications</a></li>
                                         </ul>
-                                    </li>
-                                    <li class="nav-item dropdown">
-
-                                        <a title="Make Report" class="nav-link" role="button" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
-                                            <i class="mygreen bi bi-exclamation-diamond-fill fs-3"></i>
-                                        </a>
                                     </li>
 
                                 </ul>
-                                <button label="Get Suppport" class="me-lg-3 btn btn_mygreen"><i
-                                        class="bi bi-question-circle me-1"></i>Help Requests</button>
-
+                                <a href="https://mail.google.com/mail/u/0/" target="_blank"  title="Send Email" class="mx-1 btn btn_mygreen">
+                                    <i class="fa-solid fa-file me-2"></i>Requests</a>
                             </span>
                         </div>
                     </nav>
@@ -340,7 +307,7 @@
                                     <div class="tab-pane fade show active" id="inside-tab-content" role="tabpanel"
                                         aria-labelledby="inside-tab">
                                         <h2>Weekly Cases</h2>
-                                        <canvas id="myChart" class="w-50 mx-auto"></canvas>
+                                        <canvas id="myChart" class=" w-75 mx-auto"></canvas>
                                     </div>
                                     <!-- First Tab End -->
 

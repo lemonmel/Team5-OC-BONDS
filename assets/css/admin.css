@@ -55,8 +55,14 @@ a:hover{
     color: #0d6efd;	
 }
 
+
 .mydarkgreen, h1,h2,h3,h4,h5,h6{
-    color: #183B68;
+  color: #183B68;
+}
+/* remove the bluecolor when clicked on dropdown item tab */
+.dropdown-item:focus{
+  background: none !important;
+  color: black;
 }
 
 /* Scroll Bar */
@@ -135,6 +141,11 @@ Styling Sidebar
     background-color: white !important;
 }
 
+#profile:hover, #topbar_profile:hover {
+  transform: translate3d(0, -3px, 0 );
+  box-shadow: 0 2rem 5rem 0 rgba(0, 0, 0, 0.1);
+}
+
 
 /********************
  Sidebar End 
@@ -205,6 +216,17 @@ Styling Topbar
 #top_searchbar:focus, .btn:focus{
     outline: none !important;
     box-shadow: none;  
+}
+
+/* profile background glassmor effect */
+.glassmorphism{
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 16px 0 rgba(13, 109, 253, 0.15);
+  backdrop-filter: blur( 10px );
+  -webkit-backdrop-filter: blur( 1    4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.15);
+  cursor: pointer;
 }
 
 /********************

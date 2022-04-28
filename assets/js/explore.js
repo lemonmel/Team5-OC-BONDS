@@ -575,8 +575,20 @@ for(let j = 0; j < obj.length; j++){
         const p2 = document.createElement('p');
         p2.textContent = `Service: ${food.service}`;
 
-        const p3 = document.createElement('p');
-        p3.textContent = `Address: ${food.address}`;
+        // const p3 = document.createElement('p');
+        // p3.textContent = `Address: ${food.address}`;
+
+        var addressLink = document.createElement("A");// create anchor tag
+        var textNode = document.createTextNode(`${food.address}`);//create text inside anchor tag
+        addressLink.setAttribute("href", `https://www.google.com/maps/search/${food.address}`);//set the link of anchor tag
+        addressLink.setAttribute("target", `_blank`);//set it to open in new tab
+        addressLink.appendChild(textNode);//add the text into anchor tag element
+
+        var p3 = document.createElement("span");//create a span
+        var addressParagraph = document.createElement("p");//create a paragraph
+        addressParagraph.textContent = `Address: `;//add text into paragraph
+        addressParagraph.appendChild(addressLink)//add anchor tag into paragraph
+        p3.append(addressParagraph)//add the paragrah into the span, so that it can be appended together into card
 
         const p4 = document.createElement('p');
         p4.textContent = `Hours: ${food.hours}`;
